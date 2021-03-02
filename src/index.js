@@ -28,7 +28,6 @@ client.on("message", async (message) => {
   // Only allow control from one channel
   if ((message.content === "!listen" || message.content === "!disconnect-silence") && (message.channel.name !== controlChannel)) {
     console.log("Incorrect control channel used");
-    message.channel.send("You can't add me from here! Use #" + controlChannel);
     return;
   }
 
