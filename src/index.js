@@ -26,14 +26,9 @@ client.on("message", async (message) => {
   }
 
   // Only allow control from one channel
-  if (message.channel.name !== controlChannel) {
+  if ((message.content === "!listen" || message.content === "!disconnect-silence") && (message.channel.name !== controlChannel)) {
     console.log("Incorrect control channel used");
-    return;
-  }
-
-  // User must be in the correct channel
-  if (message.member.voice.channel.name !== broadcastChannel) {
-    console.log("Users not in broadcast channel");
+    message.channel.send("You can't add me from here! Use #" + controlChannel);
     return;
   }
 
